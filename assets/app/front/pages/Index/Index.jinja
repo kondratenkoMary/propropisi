@@ -1,0 +1,20 @@
+{% extends 'front/Base.jinja' %}
+{% import 'front/utils/macros.jinja' as macros %}
+
+{% from 'front/components/TasksListStudent/TasksListStudent.jinja' import TasksListStudent %}
+{% from 'front/components/SolutionPopupStudent/SolutionPopupStudent.jinja' import SolutionPopupStudent %}
+
+{% block content %}
+    <div class="Index">
+        <div class="Index-wrapper">
+            <div class="Index-content">
+                {{ TasksListStudent(data=student, statuses = statuses) }}
+            </div>
+        </div>
+        <div class="Index-popups">
+            {% for item in student.solutions %}
+                {{ SolutionPopupStudent(item, item.status) }}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,5 @@
+{% macro svgSprite(id) -%}
+    <svg>
+        <use xlink:href="/static/svg/front/sprite.symbol.svg#{{ id }}"></use>
+    </svg>
+{%- endmacro %}

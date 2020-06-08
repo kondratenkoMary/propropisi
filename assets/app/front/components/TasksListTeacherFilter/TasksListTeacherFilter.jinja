@@ -1,0 +1,30 @@
+{% from 'front/utils/macros.jinja' import  svgSprite %}
+
+{% macro TasksListTeacherFilter(data={}) %}
+    <div class="TasksListTeacherFilter">
+        <div class="TasksListTeacherFilter-wrapper">
+            <div class="TasksListTeacherFilter-text">Показать:</div>
+            <div class="TasksListTeacherFilter-select">
+                <div class="TasksListTeacherFilter-selectText" data-default="все">
+                    <span>все</span>
+                </div>
+                <div class="TasksListTeacherFilter-selectMenu">
+                    <label class="TasksListTeacherFilter-selectMenuItem" data-id="0" for="cat-0">
+                        <input type="checkbox" name="cat-0" id="cat-0" checked>
+                        <div class="TasksListTeacherFilter-selectMenuItemCheckbox">
+                            {{ svgSprite('icon-checkbox') }}
+                        </div>
+                        <span>На проверке</span>
+                    </label>
+                    <label class="TasksListTeacherFilter-selectMenuItem" data-id="1" for="cat-1">
+                        <input type="checkbox" name="cat-1" id="cat-1" checked>
+                        <div class="TasksListTeacherFilter-selectMenuItemCheckbox">
+                            {{ svgSprite('icon-checkbox') }}
+                        </div>
+                        <span>Завершенные</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

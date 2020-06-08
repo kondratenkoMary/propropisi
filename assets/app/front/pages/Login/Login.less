@@ -1,0 +1,133 @@
+@import (reference) "~front/utils";
+
+@component: .Login;
+
+@{component} {
+    display: flex;
+
+    &-leftSide {
+        width: 487/1440*100vw;
+        background-color: #f03f35;
+        height: 100vh;
+        padding-left: 73px;
+        &Logo{
+            position: relative;
+            width: 191px;
+            height: 20px;
+            margin-top: 44px;
+
+        svg {
+            .u-Absolute100();
+        }
+
+        }
+         &Topic{
+            position: relative;
+            margin-top: 122px;
+            //width: 310vw;
+            //height: 56px;
+            font-family: @f-notoSans;
+            font-weight: @fw-black;
+            font-size: 24px;
+            text-align: left;
+             line-height: 1.15;
+            color: #FFFFFF;
+        }
+        &Subtitle{
+            position: relative;
+            margin-top: 21px;
+            font-family: @f-notoSans;
+            font-size: 17px;
+            text-align: left;
+            color: #FFFFFF;
+            width: 338px;
+            height: 234px;
+            line-height: 25/17;
+
+
+        }
+    }
+    &-rightSide{
+        display: flex;
+        width: 980/1440*100vw;
+        background-color: @c-white;
+        height: 100vh;
+          &Center{
+              margin: auto;
+              width: 346/1440*100vw;
+              &Text{
+                  font-family: @f-notoSans;
+                  font-size: 27px;
+                  font-weight: @fw-black;
+                  line-height: 40px;
+                  color: #323C47;
+                  border-bottom: 1px solid #C2CFE0;
+                  text-align: center;
+              }
+
+              &Rectangle1{
+                  input{
+
+                      width: 100%;
+                      outline: none;
+                      margin-top: 61px;
+                      background-color: #FFFFFF;
+                      border: 1px solid #C2CFE0;
+                      box-sizing: border-box;
+                      box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.05);
+                      border-radius: 4px;
+                      font-size: 14px;
+                      color: @c-gray--dark;
+                      padding: 21px 20px;
+                      font-weight: @fw-black;
+
+                      &::placeholder {
+                          font-weight: normal;
+                      }
+                  }
+
+              }
+
+              &Rectangle2{
+                  input{
+                      width: 100%;
+                      outline: none;
+                      margin-top: 8px;
+                      background-color: #FFFFFF;
+                      border: 1px solid #C2CFE0;
+                      box-sizing: border-box;
+                      box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.05);
+                      border-radius: 4px;
+                      font-size: 14px;
+                      color: @c-gray--dark;
+                      padding: 21px 20px;
+                      font-weight: @fw-black;
+
+                      &::placeholder {
+                          font-weight: normal;
+                      }
+                  }
+              }
+              &Button{
+                  button{
+                      margin-top: 46px;
+                      width: 100%;
+                      height: 42px;
+                      background-color: #f03f35;
+                      color: @c-white;
+                      font-family: @f-notoSans;
+                      font-size: 13px;
+                      border: none;
+                      outline: none;
+                      padding: 5px 10px;
+                      border-radius: 4px;
+                  }
+              }
+
+
+            }
+
+    }
+
+
+}

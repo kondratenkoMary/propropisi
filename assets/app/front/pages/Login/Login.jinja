@@ -1,0 +1,34 @@
+{% extends 'front/Login.jinja' %}
+{% from 'front/utils/macros.jinja' import  svgSprite %}
+
+{% block content %}
+    <div class="Login">
+        <div class="Login-leftSide">
+            <div class="Login-leftSideLogo">
+                {{ svgSprite('logo-white') }}
+            </div>
+            <div class="Login-leftSideTopic">
+                Интерактивная система домашних заданий
+            </div>
+            <div class="Login-leftSideSubtitle">
+                Пропрописи.рф - интерактивная система домашних заданий: тетрадь прописей, адаптированная под веб-приложение для загрузки фотографии выполненного задания,  и веб-приложение, анализирующее  с помощью ИИ качество выполнения упражнений по формированию почерка учеников начальных классов.
+            </div>
+        </div>
+        <div class="Login-rightSide">
+            <div class="Login-rightSideCenter">
+                <div class="Login-rightSideCenterText">
+                    Добро пожаловать
+                </div>
+                <div class="Login-rightSideCenterRectangle1">
+                    <input placeholder="Login" type="text" name="user" id="user">
+                </div>
+                <div class="Login-rightSideCenterRectangle2">
+                    <input placeholder="Password" type="password" name="password" id="password">
+                </div>
+                <div class="Login-rightSideCenterButton">
+                    <button type="submit" class="btn btn-default">Войти</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

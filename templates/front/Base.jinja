@@ -1,0 +1,96 @@
+{% from 'front/components/Сommon/TopNav/TopNav.jinja' import TopNav %}
+
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+
+    {% block social %}
+        <meta property="og:type" content="website"/>
+        {# TODO: Add sharing img #}
+        <meta property="og:image" content="{{ static('img/fb.png') }}"/>
+        <meta property="og:image:width" content="1200"/>
+        <meta property="og:image:height" content="630"/>
+        <meta property="og:url" content="{{ request.build_absolute_uri() }}">
+        <meta property="og:title" content=""/>
+        <meta property="og:description" content=""/>
+    {% endblock %}
+
+    <meta name="csrf-token" content="{{ csrf_token }}">
+
+    {# Favicon is generated in http://www.favicomatic.com/ #}
+    <link rel="apple-touch-icon-precomposed" sizes="152x152"
+          href="{{ static('favicon/apple-touch-icon-152x152.png') }}"/>
+    <link rel="icon" type="image/png" href="{{ static('favicon/favicon-32x32.png') }}" sizes="32x32"/>
+    <link rel="icon" type="image/png" href="{{ static('favicon/favicon-16x16.png') }}" sizes="16x16"/>
+    <link rel="shortcut icon" href="{{ static('favicon/favicon.ico') }}" type="image/x-icon"/>
+    <meta name="application-name" content=""/>
+    <meta name="msapplication-TileColor" content="#000000"/>
+    <meta name="msapplication-TileImage" content="{{ static('favicon/mstile-144x144.png') }}"/>
+
+    {% block meta %}{% endblock %}
+    {% block meta_fragment %}{% endblock %}
+
+    {% block bundle_styles %}
+        {{ render_bundle('main', 'css') }}
+    {% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+<img style="display:none" alt="" src="{{ static('svg/front/sprite.symbol.svg') }}">
+
+{% block before_content %}{% endblock %}
+
+<div class="Content" style="visibility: hidden">
+    {% block topNav %}
+        <div class="Content-topNav">
+        {% if student %}
+            {{ TopNav(student) }}
+        {% else %}
+            {{ TopNav(teacher) }}
+        {% endif %}
+        </div>
+    {% endblock %}
+
+    <div class="Content-body">
+        {% block content %}{% endblock %}
+    </div>
+    {% block footer %}
+        <div class="Content-footer">
+        </div>
+    {% endblock %}
+</div>
+
+{% block after_content %}{% endblock %}
+
+<script>
+    {% block data %}
+        window.app = {
+            data: {},
+            state: {},
+            settings: {
+                staticUrl: '{{ STATIC_URL }}',
+                urls: {}
+            }
+        };
+    {% endblock %}
+</script>
+
+{% block body %}
+{% endblock %}
+
+{% block libs %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+{% endblock %}
+
+{% block bundle_scripts %}
+    {{ render_bundle('main', 'js') }}
+{% endblock %}
+
+</body>
+</html>

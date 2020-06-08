@@ -1,0 +1,105 @@
+{% from 'front/utils/macros.jinja' import svgSprite %}
+
+{% macro SolutionPopupStudent(data={}, status={}) %}
+    <div class="SolutionPopupStudent" data-status="{{ data.status }}" data-id="{{ data.id }}">
+        <div class="SolutionPopupStudent-bg"></div>
+        <div class="SolutionPopupStudent-outter">
+            <div class="SolutionPopupStudent-wrapper">
+                <div class="SolutionPopupStudent-info" data-status="{{ status }}">
+                    <div class="SolutionPopupStudent-infoHead">
+                        <div class="SolutionPopupStudent-infoName">
+                            Задание {{ data.task.id }}
+
+                            <div class="SolutionPopupStudent-infoClose">
+                                <div class="SolutionPopupStudent-infoCloseItem"></div>
+                                <div class="SolutionPopupStudent-infoCloseItem"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="SolutionPopupStudent-infoBody">
+                        <div class="SolutionPopupStudent-infoTitle">
+                            {{ data.task.title }}
+                        </div>
+                        {% if status == 3 %}
+                            <div class="SolutionPopupStudent-infoDescr SolutionPopupStudent-infoDescr--outDated">
+                                <div class="SolutionPopupStudent-infoDescrIcon">
+                                    {{ svgSprite('icon-info-red') }}
+                                </div>
+                                <span>Прием заданий окончен</span>
+                            </div>
+                        {% else %}
+                            <div class="SolutionPopupStudent-infoDescr">
+                                {{ data.task.description }}
+                            </div>
+                        {% endif %}
+                        <div class="SolutionPopupStudent-infoDate">
+                            Сделать до: <span>{{ data.task.deadline }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                {% if not status == 3 %}
+                    <div class="SolutionPopupStudent-solution" data-status="{{ data.status }}">
+                        <div class="SolutionPopupStudent-solutionBody">
+                            <div class="SolutionPopupStudent-solutionTitle">
+                                Решение
+                            </div>
+
+                            <label for="solution-{{ data.task.id }}" class="SolutionPopupStudent-solutionDownload">Загрузить решение</label>
+                            <input name="solution" id="solution-{{ data.task.id }}" type="file" />
+                            <div class="SolutionPopupStudent-solutionPreview">
+                                <a href="{{ data.img }}" target="_blank" class="SolutionPopupStudent-solutionPreviewImg">
+                                    <img src="{{ data.img }}">
+                                </a>
+                                <div class="SolutionPopupStudent-solutionPreviewName">
+                                    {{ data.fileName }}
+                                </div>
+                                <div class="SolutionPopupStudent-solutionPreviewSuccess">Решение загружено</div>
+                            </div>
+                            <div class="SolutionPopupStudent-solutionDate">
+                                Дата: <span>{{ data.dateLoading }}</span>
+                                <div class="SolutionPopupStudent-solutionEdit">
+                                    <label for="solution-{{ data.task.id }}" class="SolutionPopupStudent-solutionEditIcon SolutionPopupStudent-solutionEditIcon--edit">
+                                        {{ svgSprite('icon-edit') }}
+                                    </label>
+                                    <div class="SolutionPopupStudent-solutionEditIcon SolutionPopupStudent-solutionEditIcon--delete">
+                                        {{ svgSprite('icon-delete') }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="SolutionPopupStudent-send" data-status="{{ data.status }}">
+                        <div class="SolutionPopupStudent-sendBody">
+                            <div class="SolutionPopupStudent-sendBtn">Отправить учителю</div>
+                        </div>
+                    </div>
+
+                    <div class="SolutionPopupStudent-mark" data-status="{{ data.status }}">
+                        <div class="SolutionPopupStudent-markBody">
+                            <div class="SolutionPopupStudent-markTitle">
+                                Оценка
+                            </div>
+                            <div class="SolutionPopupStudent-markDescr">
+                                <span data-status="1">Задание находится на проверке</span>
+                                <span data-status="2">
+                                    {{ svgSprite('icon-mark-' + data.mark|string) }}
+                                </span>
+                            </div>
+                            <div class="SolutionPopupStudent-markDate">
+                                Дата: <span>
+                                    {% if data.dateCheck %}
+                                        {{ data.dateCheck }}
+                                    {% else %}
+                                        {{ data.dateLoading }}
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

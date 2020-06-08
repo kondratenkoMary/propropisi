@@ -1,0 +1,143 @@
+@import (reference) "~front/utils";
+
+@component: .TasksListStudentFilter;
+
+@{component} {
+    display: flex;
+
+    &-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 12px;
+        line-height: 16 / 12;
+        letter-spacing: 0.01em;
+        color: #6A707E;
+    }
+
+    &-text {
+        display: flex;
+    }
+
+    &-select {
+        display: flex;
+        cursor: pointer;
+        position: relative;
+
+        &Text {
+            display: flex;
+            position: relative;
+            padding-right: 16px;
+
+            &--0 {
+                color: #B9B9B9;
+            }
+
+            &--1 {
+                color: @c-yellow;
+            }
+
+            &--2 {
+                color: @c-green;
+            }
+
+            &--3 {
+                color: @c-red;
+            }
+
+            span {
+                display: flex;
+                margin-left: 4px;
+                text-decoration: underline;
+                text-transform: lowercase;
+            }
+
+            &:after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 0;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                border-left: 4px solid transparent;
+                border-right: 4px solid transparent;
+
+                border-top: 4px solid #AEAEAE;
+            }
+        }
+
+        &Menu {
+            position: absolute;
+            top: calc(100% ~"+" 18px);
+            right: -10px;
+            background: @c-white;
+            z-index: 2;
+            box-shadow: 0 2px 109px rgba(0, 0, 0, 0.08);
+            padding: 22px 13px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity @ease;
+
+            &.isOpen {
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            &Item {
+                display: flex;
+                width: 100%;
+                margin-top: 16px;
+                flex-direction: row;
+                align-items: center;
+                font-size: 12px;
+                line-height: 18 / 12;
+                letter-spacing: 0.01em;
+                color: #6A707E;
+                cursor: pointer;
+
+                input {
+                    display: none;
+                }
+
+                &Checkbox {
+                    margin-right: 5px;
+                    width: 16px;
+                    height: 16px;
+                    border: 2px solid #D5D5D5;
+                    border-radius: 4px;
+                    position: relative;
+
+                    input:checked + & {
+                        border: none;
+                        background: @c-green;
+
+                        svg {
+                            opacity: 1;
+                        }
+                    }
+
+                    svg {
+                        opacity: 0;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        width: 9px;
+                        height: 7px;
+                        z-index: 3;
+                        transform: translate3d(-50%, -50%, 0);
+                    }
+                }
+
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}

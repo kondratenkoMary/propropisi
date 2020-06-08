@@ -1,0 +1,10 @@
+{
+  "DB_NAME": "propropisi",
+  "DB_USER": "propropisi",
+  "DB_PASSWORD": "n5pqRTCrC234cdBV",
+  "DB_HOST": "127.0.0.1",
+  "DB_PORT": "3306",
+
+  "STATIC_URL": "/static/",
+  "MEDIA_URL": "/media/"
+}

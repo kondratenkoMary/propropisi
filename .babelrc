@@ -1,0 +1,22 @@
+{
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        'targets': {
+          'ie': '11',
+          'chrome': '69',
+          'firefox': '60',
+          'safari': '10',
+          'edge': '42',
+          'ios': '10'
+        },
+        'modules': false
+      }
+    ]
+  ],
+  plugins: [
+    '@babel/plugin-syntax-dynamic-import',
+    '@babel/plugin-transform-runtime'
+  ]
+}

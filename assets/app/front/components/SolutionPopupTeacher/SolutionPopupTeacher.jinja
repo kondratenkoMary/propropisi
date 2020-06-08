@@ -1,0 +1,91 @@
+{% from 'front/utils/macros.jinja' import svgSprite %}
+
+{% macro SolutionPopupTeacher(id=0, data={}, status={}) %}
+    <div class="SolutionPopupTeacher" data-id="{{ id }}">
+        <div class="SolutionPopupTeacher-bg"></div>
+        <div class="SolutionPopupTeacher-outter">
+            <div class="SolutionPopupTeacher-wrapper">
+                <div class="SolutionPopupTeacher-info">
+                    <div class="SolutionPopupTeacher-infoHead">
+                        <div class="SolutionPopupTeacher-infoName">
+                            Задание {{ id }}
+
+                            <div class="SolutionPopupTeacher-infoClose">
+                                <div class="SolutionPopupTeacher-infoCloseItem"></div>
+                                <div class="SolutionPopupTeacher-infoCloseItem"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="SolutionPopupTeacher-infoBody">
+                        <div class="SolutionPopupTeacher-infoAuthor">
+                            <div class="SolutionPopupTeacher-infoAuthorImg">
+                                <img src="{{ data.student.img.thumb }}">
+                            </div>
+                            <div class="SolutionPopupTeacher-infoAuthorName">
+                                {{ data.student.name }}
+                            </div>
+                        </div>
+                        <div class="SolutionPopupTeacher-infoPreview">
+                            <a href="{{ data.img }}" target="_blank"
+                               class="SolutionPopupTeacher-infoPreviewImg">
+                                <img src="{{ data.img }}">
+                            </a>
+                            <div class="SolutionPopupTeacher-infoPreviewName">
+                                {{ data.fileName }}
+                            </div>
+                            <div class="SolutionPopupTeacher-infoPreviewPercents">
+                                {{ data.percent }}%
+                            </div>
+                        </div>
+                        <div class="SolutionPopupTeacher-infoDate">
+                            Дата: <span>{{ data.dateLoading }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="SolutionPopupTeacher-mark" data-status="{% if data.mark %}1{% else %}0{% endif %}">
+                    <div class="SolutionPopupTeacher-markBody">
+                        <div class="SolutionPopupTeacher-markText">
+                            <div class="SolutionPopupTeacher-markTitle">
+                                Оценка
+                            </div>
+
+                            <div class="SolutionPopupTeacher-markDescr" data-status="0">
+                                Рекомендуемая оценка
+                            </div>
+
+                            <div class="SolutionPopupTeacher-markDescr" data-status="1">
+                                Вы оценили эту работу
+                            </div>
+
+                            <div class="SolutionPopupTeacher-markAgree">
+                                Принять
+                            </div>
+                        </div>
+                        <div class="SolutionPopupTeacher-markValue" data-status="0">
+                            <input type="text" {% if data.markAI %}value="{{ data.markAI }}"{% endif %}>
+                            <div class="SolutionPopupTeacher-markValueIcon">
+                                {% if data.markAI %}{{ svgSprite('icon-mark-' + data.markAI|string) }}{% endif %}
+                            </div>
+                        </div>
+                        <div class="SolutionPopupTeacher-markValue" data-status="1">
+                            <div class="SolutionPopupTeacher-markValueText">
+                                {% if data.mark %}{{ data.mark }}{% endif %}
+                            </div>
+                            <div class="SolutionPopupTeacher-markValueIcon">
+                                {% if data.mark %}{{ svgSprite('icon-mark-' + data.mark|string) }}{% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="SolutionPopupTeacher-nav">
+                    <div class="SolutionPopupTeacher-navBody">
+                        <div class="SolutionPopupTeacher-navPrev">Назад</div>
+                        <div class="SolutionPopupTeacher-navNext">Далее</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

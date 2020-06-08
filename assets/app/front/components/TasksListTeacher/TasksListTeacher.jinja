@@ -1,0 +1,45 @@
+{% from 'front/utils/macros.jinja' import svgSprite %}
+
+{% from 'front/components/TasksListTeacherFilter/TasksListTeacherFilter.jinja' import TasksListTeacherFilter %}
+{% from 'front/components/TaskTeacher/TaskTeacher.jinja' import TaskTeacher %}
+
+{% macro TasksListTeacher(data={}) %}
+    <div class="TasksListTeacher">
+        <div class="TasksListTeacher-wrapper">
+            <div class="TasksListTeacher-account">
+                <div class="TasksListTeacher-accountWrapper">
+                    <div class="TasksListTeacher-accountImg">
+                        <img src="{{ data.teacher.img.thumb }}">
+                    </div>
+                    <div class="TasksListTeacher-accountInfo">
+                        <div class="TasksListTeacher-accountInfoName">{{ data.teacher.name }}</div>
+                        <div class="TasksListTeacher-accountInfoPosition">Учитель</div>
+                    </div>
+                </div>
+            </div>
+            <div class="TasksListTeacher-header">
+                <div class="TasksListTeacher-headerWrapper">
+                    {{ TasksListTeacherFilter(data.taskStatuses) }}
+                </div>
+            </div>
+            <div class="TasksListTeacher-list">
+                <div class="TasksListTeacher-listInner">
+                    {% for item in data.teacher.tasks %}
+                        {{ TaskTeacher(item, data.taskStatuses[item.status]) }}
+                        {{ TaskTeacher(item, data.taskStatuses[item.status]) }}
+                        {{ TaskTeacher(item, data.taskStatuses[item.status]) }}
+                        {{ TaskTeacher(item, data.taskStatuses[item.status]) }}
+                        {{ TaskTeacher(item, data.taskStatuses[item.status]) }}
+                        {{ TaskTeacher(item, data.taskStatuses[item.status]) }}
+                        {{ TaskTeacher(item, data.taskStatuses[item.status]) }}
+                        {{ TaskTeacher(item, data.taskStatuses[item.status]) }}
+                        {{ TaskTeacher(item, data.taskStatuses[item.status]) }}
+                        {{ TaskTeacher(item, data.taskStatuses[item.status]) }}
+                        {{ TaskTeacher(item, data.taskStatuses[item.status]) }}
+                        {{ TaskTeacher(item, data.taskStatuses[item.status]) }}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

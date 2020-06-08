@@ -1,0 +1,11 @@
+{% extends 'front/Base.jinja' %}
+
+{% block topNav %}{% endblock %}
+
+{% block bundle_styles %}
+    {{ render_bundle('login', 'css') }}
+{% endblock %}
+
+{% block bundle_scripts %}
+    {{ render_bundle('login', 'js') }}
+{% endblock %}

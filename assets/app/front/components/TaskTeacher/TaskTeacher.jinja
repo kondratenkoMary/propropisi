@@ -1,0 +1,82 @@
+{% from 'front/utils/macros.jinja' import svgSprite %}
+
+{% macro TaskTeacher(data={}, status={}) %}
+
+    <div class="TaskTeacher" data-status="{{ data.status }}" data-id="{{ data.id }}">
+        <div class="TaskTeacher-wrapper">
+            <div class="TaskTeacher-info">
+                <div class="TaskTeacher-infoHead">
+                    <div class="TaskTeacher-infoName">Задание {{ data.id }}</div>
+                    {% if data.status == 0 %}
+                        <div class="TaskTeacher-infoTag">Проверить {{ svgSprite('icon-info-yellow') }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="TaskTeacher-infoRating">
+                    <div class="TaskTeacher-infoRatingMark">
+                        <div class="TaskTeacher-infoRatingMarkInner">
+                            <div class="TaskTeacher-infoRatingMarkCircle">
+                                <svg>
+                                    <circle cx="50%" cy="50%" class="notFound" />
+                                </svg>
+                                    {% if data.percents.done %}
+                                        <svg data-percent="{{ data.percents.done }}">
+                                            <circle cx="50%" cy="50%" class="done" />
+                                        </svg>
+                                    {% endif %}
+
+                                    {% if data.percents.check %}
+                                        <svg data-percent="{{ data.percents.check }}">
+                                            <circle cx="50%" cy="50%" class="check" />
+                                        </svg>
+                                    {% endif %}
+
+                                    {% if data.percents.notSent and data.status == 1 %}
+                                        <svg data-percent="{{ data.percents.notSent }}">
+                                            <circle cx="50%" cy="50%" class="out" />
+                                        </svg>
+                                    {% endif %}
+                            </div>
+                            <div class="TaskTeacher-infoRatingMarkPercent">{{ data.percents.done }}%</div>
+                        </div>
+                    </div>
+                    <div class="TaskTeacher-infoRatingStatuses">
+                        {% if data.percents.done %}
+                            <div class="TaskTeacher-infoRatingStatusesItem TaskTeacher-infoRatingStatusesItem--done">
+                                <div class="TaskTeacher-infoRatingStatusesItemIcon"></div>
+                                <div class="TaskTeacher-infoRatingStatusesItemText">Завершено</div>
+                            </div>
+                        {% endif %}
+                        {% if data.percents.check %}
+                            <div class="TaskTeacher-infoRatingStatusesItem TaskTeacher-infoRatingStatusesItem--wait">
+                                <div class="TaskTeacher-infoRatingStatusesItemIcon"></div>
+                                <div class="TaskTeacher-infoRatingStatusesItemText">На проверке</div>
+                            </div>
+                        {% endif %}
+                        {% if data.percents.notSent and data.status %}
+                            <div class="TaskTeacher-infoRatingStatusesItem TaskTeacher-infoRatingStatusesItem--out">
+                                <div class="TaskTeacher-infoRatingStatusesItemIcon"></div>
+                                <div class="TaskTeacher-infoRatingStatusesItemText">Просрочено</div>
+                            </div>
+                        {% endif %}
+                        {% if data.percents.notSent and not data.status %}
+                            <div class="TaskTeacher-infoRatingStatusesItem TaskTeacher-infoRatingStatusesItem--notFound">
+                                <div class="TaskTeacher-infoRatingStatusesItemIcon"></div>
+                                <div class="TaskTeacher-infoRatingStatusesItemText">Не прислали</div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="TaskTeacher-infoFooter">
+                    <div class="TaskTeacher-infoFooterDate">
+                        Дата: <span>{{ data.deadline }}</span>
+                    </div>
+                    <div class="TaskTeacher-infoFooterStatus">
+                        {{ status }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

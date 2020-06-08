@@ -1,0 +1,31 @@
+@import (reference) "~front/const";
+
+.u-AspectRatio(@width, @height) {
+    position: relative;
+
+    &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: (@height / @width) * 100%;
+    }
+}
+
+.u-AbsoluteObjectFit (@size: cover, @position: center) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: @size;
+    object-position: @position;
+    font-family: 'object-fit: @{size}; object-position: @{position}';
+}
+
+.u-Absolute100() {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

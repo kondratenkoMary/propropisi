@@ -1,0 +1,29 @@
+{% from 'front/utils/macros.jinja' import  svgSprite %}
+
+{% macro TopNav(data) %}
+    <nav class="TopNav">
+        <div class="TopNav-wrapper">
+            <div class="TopNav-logo">
+                {{ svgSprite('logo') }}
+            </div>
+            <div class="TopNav-menu">
+                <div class="TopNav-menuAccount">
+                    <div class="TopNav-menuAccountImg">
+                        <img src="{{ data.img.thumb }}">
+                    </div>
+                    <div class="TopNav-menuAccountInfo">
+                        <div class="TopNav-menuAccountInfoName">
+                            {{ data.name }}
+                        </div>
+                        <div class="TopNav-menuAccountInfoClass">
+                            {% if data.classname %}{{ data.classname }}{% else %}Учитель{% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="TopNav-menuExit">
+                    {{ svgSprite('icon-logout') }}
+                </div>
+            </div>
+        </div>
+    </nav>
+{% endmacro %}

@@ -1,0 +1,28 @@
+{% extends 'front/Base.jinja' %}
+{% import 'front/utils/macros.jinja' as macros %}
+
+{% from 'front/components/TasksListTeacher/TasksListTeacher.jinja' import TasksListTeacher %}
+{% from 'front/components/SolutionPopupTeacher/SolutionPopupTeacher.jinja' import SolutionPopupTeacher %}
+
+{% block content %}
+    {% set data = {
+        'taskStatuses': taskStatuses,
+        'teacher': teacher
+    } %}
+    <div class="Teacher">
+        <div class="Teacher-wrapper">
+            <div class="Teacher-content">
+                {{ TasksListTeacher(data) }}
+            </div>
+        </div>
+        <div class="Teacher-popups">
+            {% for task in teacher.tasks %}
+                <div class="Teacher-popupsTask" data-id="{{ task.id }}">
+                    {% for solution in task.solutions %}
+                        {{ SolutionPopupTeacher(task.id, solution, solution.status) }}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

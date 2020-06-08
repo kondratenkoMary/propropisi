@@ -1,0 +1,31 @@
+{% from 'front/utils/macros.jinja' import svgSprite %}
+
+{% macro TaskStudent(data={}, status={}) %}
+    <div class="TaskStudent" data-status="{{ data.status }}" data-id="{{ data.id }}">
+        <div class="TaskStudent-wrapper">
+            <div class="TaskStudent-info">
+                <div class="TaskStudent-infoName">Задание {{ data.task.id }}</div>
+                <div class="TaskStudent-infoTitle">
+                    <div class="TaskStudent-infoTitleIcon">
+                        {{ svgSprite('icon-status-' + data.status|string) }}
+                    </div>
+                    {{ data.task.title }}
+                </div>
+                <div class="TaskStudent-infoDate{% if data.status == 3 %} TaskStudent-infoDate--deadlined{% endif %}">
+                    Дата: <span>{{ data.task.deadline }}</span>
+                </div>
+            </div>
+            <div class="TaskStudent-mark">
+                {% if data.status == 2 %}
+                    <div class="TaskStudent-markValue">
+                        {{ svgSprite('icon-mark-' + data.mark|string) }}
+                    </div>
+                {% else %}
+                    <div class="TaskStudent-markStatus">
+                        {{ status }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endmacro %}
