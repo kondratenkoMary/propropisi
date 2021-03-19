@@ -5,7 +5,7 @@ django-debug-toolbar==2.2
 django-js-reverse==0.9.1
 python-memcached==1.59
 django-cache-machine==1.1.0
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 djangorestframework-camel-case==1.1.2
 djangorestframework-bulk==0.2.1
 drf-writable-nested==0.5.4
