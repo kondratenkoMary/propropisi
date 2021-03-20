@@ -1,6 +1,6 @@
 Django==2.2
 mysqlclient==1.4.6
-Jinja2==2.11.1
+Jinja2==2.11.3
 django-debug-toolbar==2.2
 django-js-reverse==0.9.1
 python-memcached==1.59
