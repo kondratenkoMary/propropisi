@@ -1,7 +1,7 @@
 Django==2.2
 mysqlclient==1.4.6
 Jinja2==2.11.1
-django-debug-toolbar==2.2
+django-debug-toolbar==2.2.1
 django-js-reverse==0.9.1
 python-memcached==1.59
 django-cache-machine==1.1.0
